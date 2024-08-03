@@ -116,6 +116,11 @@
 			"id": "geode.node-ids",
 			"version": ">=v1.1.4",
 			"importance": "required"
+		},
+		{
+			"id": "geode.custom-keybinds",
+			"version": "1.7.1",
+			"importance": "required"
 		}
 	],
 	"developer": "Zilko",
