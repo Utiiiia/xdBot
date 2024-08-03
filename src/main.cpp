@@ -12,19 +12,6 @@
 #include <vector>
 #include <chrono>
 #include "fileSystem.hpp"
-#include <geode.custom-keybinds/include/Keybinds.hpp>
-
-using namespace keybinds;
-
-$execute{
-	BindManager::get()->registerBindable({
-        "playingAction"_spr,
-        "Beat The Level!",
-        "Beating your level",
-        { Keybind::create(KEY_P, Modifier::None) },
-        "BeatTheLevel/Awesome Tricks"
-    });
-
 
 Mod* mod = nullptr;
 
@@ -1466,4 +1453,22 @@ void searchMacroPopup::searchMacro(CCObject*) {
 	}
 	searchString = std::string(macroNameInput->getString());
 	refreshMenu = true;
+
+	#include <geode.custom-keybinds/include/Keybinds.hpp>
+
+	
+using namespace keybinds;
+
+$execute{
+	BindManager::get()->registerBindable({
+        "Beatthelevel"_spr,
+        "Beat The Level!",
+        "Beating your level",
+        { Keybind::create(KEY_P, Modifier::None) },
+        "BeatTheLevel/Awesome Tricks"
+    });
+
+ new EventListener([=](InvokeBindEvent* event) {
+	return ListenerResult::Propagate;
+    }, InvokeBindFilter(nullptr, "Beatthelevel"));
 }
