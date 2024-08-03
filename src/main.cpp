@@ -12,6 +12,19 @@
 #include <vector>
 #include <chrono>
 #include "fileSystem.hpp"
+#include <geode.custom-keybinds/include/Keybinds.hpp>
+
+using namespace keybinds;
+
+$execute{
+	BindManager::get()->registerBindable({
+        "playingAction"_spr,
+        "Beat The Level!",
+        "Beating your level",
+        { Keybind::create(KEY_P, Modifier::None) },
+        "BeatTheLevel/Awesome Tricks"
+    });
+
 
 Mod* mod = nullptr;
 
@@ -291,7 +304,7 @@ public:
     	recorder.state = (recorder.state == state::playing) ? state::off : state::playing;
 
 		if (recorder.state == state::playing) {
-			restart = true;
+			restart = false;
 			mod->setSettingValue("speedhack", 1.0);
 			if (mod->getSettingValue<bool>("speedhack_audio")) {
 				FMOD::ChannelGroup* channel;
